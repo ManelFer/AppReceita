@@ -1,39 +1,60 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import { Tabs } from 'expo-router';
+import { PaperProvider } from 'react-native-paper';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { theme } from '../src/theme';
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <PaperProvider theme={theme}>
+      <Tabs
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            switch (route.name) {
+              case 'home':
+                iconName = focused ? 'home' : 'home-outline';
+                break;
+              case 'search':
+                iconName = focused ? 'magnify' : 'magnify';
+                break;
+              case 'favorites':
+                iconName = focused ? 'heart' : 'heart-outline';
+                break;
+              default:
+                iconName = 'circle';
+            }
+
+            return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: theme.colors.primary,
+          tabBarInactiveTintColor: 'gray',
+          headerStyle: {
+            backgroundColor: theme.colors.primary,
+          },
+          headerTintColor: '#fff',
+        })}
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: 'Home',
+            headerShown: false,
+          }}
+        />
+        <Tabs.Screen
+          name="search"
+          options={{
+            title: 'Search',
+          }}
+        />
+        <Tabs.Screen
+          name="favorites"
+          options={{
+            title: 'Favorites',
+          }}
+        />
+      </Tabs>
+    </PaperProvider>
   );
 }
