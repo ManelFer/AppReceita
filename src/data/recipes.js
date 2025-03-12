@@ -77,25 +77,35 @@ export const recipes = {
   lunch: [
     {
       id: 'l1',
-      name: 'Grilled Chicken with Baked Vegetables',
+      name: 'Frango Grelhado com Legumes Assados',
       category: 'lunch',
       image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=480',
-      prepTime: '45 mins',
-      difficulty: 'Medium',
+      prepTime: '45 minutos',
+      difficulty: 'Médio',
       ingredients: [
-        'Chicken breast',
-        'Mixed vegetables',
-        'Olive oil',
-        'Herbs and spices'
+        '4 peitos de frango',
+        '2 colheres de sopa de azeite de oliva',
+        '1 colher de chá de alho em pó',
+        '1 colher de chá de páprica',
+        'Sal e pimenta a gosto',
+        'Suco de 1 limão',
+        'Ervas frescas (como alecrim ou tomilho)',
+        '2 cenouras cortadas em rodelas',
+        '1 abobrinha cortada em rodelas',
+        '1 pimentão vermelho cortado em tiras',
+        '1 cebola roxa cortada em tiras'
       ],
       instructions: [
-        'Marinate chicken',
-        'Prepare vegetables',
-        'Grill chicken',
-        'Roast vegetables'
+        'Em uma tigela, misture o azeite de oliva, o alho em pó, a páprica, o suco de limão, sal, pimenta e as ervas frescas. Marine os peitos de frango por pelo menos 30 minutos.',
+        'Preaqueça o forno a 200°C. Em uma assadeira, coloque as cenouras, abobrinha, pimentão e cebola. Regue com azeite, tempere com sal, pimenta e ervas, e misture bem.',
+        'Aqueça uma grelha ou frigideira antiaderente em fogo médio-alto. Grelhe o frango por 6-7 minutos de cada lado até estarem cozidos.',
+        'Coloque os legumes no forno e asse por 25-30 minutos, mexendo na metade do tempo, até ficarem dourados e macios.',
+        'Sirva o frango grelhado com os legumes assados ao lado. Adicione um fio de azeite extra ou ervas frescas, se desejar.'
       ],
-      tips: 'Marinate chicken for at least 30 minutes for better flavor'
+      tips: 'Para um sabor mais intenso, deixe o frango marinar por pelo menos 1 hora ou durante a noite.'
     }
+    
+    
   ],
   snack: [
     {
